@@ -61,15 +61,20 @@ CREATE DATABASE blog_db;
 
 4. Create a `.env` file in the root directory:
 ```
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=your_password
-DB_NAME=blog_db
+MYSQLHOST=localhost
+MYSQLUSER=root
+MYSQLPASSWORD=your_password
+MYSQLDATABASE=blog_db
 JWT_SECRET=your_jwt_secret_key
 PORT=5000
 ```
 
-5. Start the development servers:
+5. Create a `.env` file in the frontend directory with the following content:
+```
+VITE_BACKEND_URL=http://localhost:5000
+```
+
+6. Start the development servers:
 ```bash
 # Start backend server (from root directory)
 npm run dev
