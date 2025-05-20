@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import API_ENDPOINTS from '../config/api';
 
 const Register = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const Register = ({ setIsAuthenticated }) => {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/register', {
+      const response = await axios.post(API_ENDPOINTS.AUTH.REGISTER, {
         name: formData.name,
         email: formData.email,
         password: formData.password,

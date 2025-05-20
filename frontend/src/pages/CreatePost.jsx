@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import axios from 'axios';
+import API_ENDPOINTS from '../config/api';
 
 const CreatePost = () => {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ const CreatePost = () => {
       
       if (currentDraftId && draft) {
         // Update existing draft
-        response = await axios.put(`http://localhost:5000/api/posts/${currentDraftId}`, {
+        response = await axios.put(API_ENDPOINTS.POSTS.UPDATE(currentDraftId), {
           title,
           content,
           tags,
@@ -51,7 +52,7 @@ const CreatePost = () => {
         });
       } else {
         // Create new post
-        response = await axios.post('http://localhost:5000/api/posts', {
+        response = await axios.post(API_ENDPOINTS.POSTS.CREATE, {
           title,
           content,
           tags,

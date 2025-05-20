@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import ReactQuill from 'react-quill';
+import API_ENDPOINTS from '../config/api';
 
 const PostDetail = () => {
   const { id } = useParams();
@@ -36,9 +37,9 @@ const PostDetail = () => {
     const fetchData = async () => {
       try {
         const [postResponse, commentsResponse, allPostsResponse] = await Promise.all([
-          axios.get(`http://localhost:5000/api/posts/${id}`),
-          axios.get(`http://localhost:5000/api/posts/${id}/comments`),
-          axios.get('http://localhost:5000/api/posts')
+          axios.get(API_ENDPOINTS.POSTS.DETAIL(id)),
+          axios.get(API_ENDPOINTS.POSTS.COMMENTS(id)),
+          axios.get(API_ENDPOINTS.POSTS.LIST)
         ]);
         setPost(postResponse.data);
         setComments(commentsResponse.data);
@@ -65,7 +66,7 @@ const PostDetail = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/posts/${id}/comments`,
+        API_ENDPOINTS.POSTS.COMMENTS(id),
         { content: newComment },
         {
           headers: {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import API_ENDPOINTS from '../config/api';
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -14,12 +15,12 @@ const Profile = () => {
     const fetchUserData = async () => {
       try {
         const [userResponse, postsResponse] = await Promise.all([
-          axios.get('http://localhost:5000/api/users/me', {
+          axios.get(API_ENDPOINTS.USERS.ME, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
           }),
-          axios.get('http://localhost:5000/api/posts/my-posts', {
+          axios.get(API_ENDPOINTS.POSTS.MY_POSTS, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
@@ -43,7 +44,7 @@ const Profile = () => {
 
   const handleDeletePost = async (postId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/posts/${postId}`, {
+      await axios.delete(API_ENDPOINTS.POSTS.DELETE(postId), {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },

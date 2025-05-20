@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import axios from 'axios';
+import API_ENDPOINTS from '../config/api';
 
 const EditPost = () => {
   const { id } = useParams();
@@ -17,7 +18,7 @@ const EditPost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/posts/${id}`, {
+        const response = await axios.get(API_ENDPOINTS.POSTS.DETAIL(id), {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -41,7 +42,7 @@ const EditPost = () => {
     try {
       setSaving(true);
       const response = await axios.put(
-        `http://localhost:5000/api/posts/${id}`,
+        API_ENDPOINTS.POSTS.UPDATE(id),
         {
           title,
           content,
@@ -87,7 +88,7 @@ const EditPost = () => {
       
       // Update the post to published status
       const response = await axios.put(
-        `http://localhost:5000/api/posts/${id}`,
+        API_ENDPOINTS.POSTS.UPDATE(id),
         {
           title,
           content,
