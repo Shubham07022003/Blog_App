@@ -7,7 +7,7 @@ A full-stack blog application with JWT authentication, draft functionality, and 
 - User authentication (register, login, profile management)
 - Create, edit, and delete blog posts
 - Save posts as drafts
-- Auto-save functionality (every 5 seconds)
+- Auto-save functionality 
 - Comment system
 - Responsive design
 - Rich text editor
@@ -40,7 +40,7 @@ A full-stack blog application with JWT authentication, draft functionality, and 
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+https://github.com/Shubham07022003/Blog_App.git
 cd blog-app
 ```
 
