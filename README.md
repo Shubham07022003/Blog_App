@@ -2,6 +2,9 @@
 
 A full-stack blog application with JWT authentication, draft functionality, and auto-save features.
 
+## Live Demo
+Check out the live application at: [Blog App](https://blogapp1.netlify.app/)
+
 ## Features
 
 - User authentication (register, login, profile management)
