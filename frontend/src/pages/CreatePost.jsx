@@ -102,7 +102,7 @@ const CreatePost = () => {
       
       if (currentDraftId) {
         // Update existing draft to published post
-        response = await axios.put(`http://localhost:5000/api/posts/${currentDraftId}`, {
+        response = await axios.put(API_ENDPOINTS.POSTS.UPDATE(currentDraftId), {
           title,
           content,
           tags,
@@ -116,7 +116,7 @@ const CreatePost = () => {
         setCurrentDraftId(null);
       } else {
         // Create new published post
-        response = await axios.post('http://localhost:5000/api/posts', {
+        response = await axios.post(API_ENDPOINTS.POSTS.CREATE, {
           title,
           content,
           tags,
@@ -147,7 +147,7 @@ const CreatePost = () => {
       
       if (currentDraftId) {
         // Update existing draft
-        response = await axios.put(`http://localhost:5000/api/posts/${currentDraftId}`, {
+        response = await axios.put(API_ENDPOINTS.POSTS.UPDATE(currentDraftId), {
           title,
           content,
           tags,
@@ -159,7 +159,7 @@ const CreatePost = () => {
         });
       } else {
         // Create new draft
-        response = await axios.post('http://localhost:5000/api/posts', {
+        response = await axios.post(API_ENDPOINTS.POSTS.CREATE, {
           title,
           content,
           tags,
